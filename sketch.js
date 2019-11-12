@@ -39,16 +39,38 @@ var d = random(0, 255);
 var e = random(0, 255);
 var f = random(0, 255);
 
-  //muiltiple suns
-	for (var x = 5; x < 800; x = x+50){
-		for (var y = 5; y < 800; y = y+50){
-			push();
-			translate(x, y);
-      rotate(mouseY);
-	  	drawSun();
-			pop();
-		}
-  }
+// Set the volume to a range between 0 and 1.0
+let volume = map(mouseX, 0, width, 0, 1);
+volume = constrain(volume, 0, 1);
+song.amp(volume);
+
+// Set the rate to a range between 0.1 and 4
+// Changing the rate alters the pitch
+let speed = map(mouseY, 0.1, height, 0, 2);
+speed = constrain(speed, 0.01, 4);
+song.rate(speed);
+
+push();
+translate(12,12);
+rectMode(CENTER);
+rotate(mouseX-2);
+drawSun();
+pop();
+
+
+
+
+  // //muiltiple suns
+	// for (var x = 5; x < 200; x = x+50){
+	// 	for (var y = 5; y < 200; y = y+50){
+	// 		push();
+  //     rectMode(CENTER);
+  //     translate(width/2, height/2);
+  //     rotate((mouseX/width)*2*PI);
+	//   	drawSun();
+	// 		pop();
+	// 	}
+  // }
 
 function drawSun(){
   //bass circles
