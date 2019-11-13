@@ -2,6 +2,8 @@ let angle = 1;
 let x = 400;
 let y = 400;
 var fft = new p5.FFT();
+var soundFile;
+var suns =[];
 
 
 let song;
@@ -15,6 +17,14 @@ function setup() {
   amplitude = new p5.Amplitude();
   fft = new p5.FFT();
 }
+
+function gotFile(file){
+  if ((!soundFile) && (file.type == "audio")) {
+    soundFile = new p5.SoundFile(file.data);
+    initSound();
+  }
+}
+
 
 function mousePressed() {
   if (song.isPlaying()) {
@@ -50,53 +60,61 @@ let speed = map(mouseY, 0.1, height, 0, 2);
 speed = constrain(speed, 0.01, 4);
 song.rate(speed);
 
-push();
-translate(12,12);
-rectMode(CENTER);
-rotate(mouseX-2);
-drawSun();
-pop();
+// for (var i = 0; i < 3; i++) {
+//   drawSun[i]= new drawSun();
+//   push();
+// }
+//   function mousePressed() {
+//       suns.push(new drawSun());
 
 
+  //muiltiple suns
+	for (var x = 5; x < 200; x = x+50){
+		for (var y = 5; y < 200; y = y+50){
+      push();
+      drawBasscircles();
+      Rec();
+      drawCircles();
+      ellipseMode(CENTER);
+      rectMode(CENTER);
+      translate(width/2, height/2);
+      rotate((mouseX/width)*2*PI);
+			pop();
+		}
+  }
 
-
-  // //muiltiple suns
-	// for (var x = 5; x < 200; x = x+50){
-	// 	for (var y = 5; y < 200; y = y+50){
-	// 		push();
-  //     rectMode(CENTER);
-  //     translate(width/2, height/2);
-  //     rotate((mouseX/width)*2*PI);
-	//   	drawSun();
-	// 		pop();
-	// 	}
-  // }
-
-function drawSun(){
+function drawBasscircles(){
   //bass circles
   noFill();
   strokeWeight(2);
   stroke(d,e,f)
   ellipse(x, y, sizecircle, sizecircle);
+}
 
+function drawRec(){
   //rectangle in the center
   translate(x,y);
   fill(d,e,f);
   rotate(angle);
   rectMode(CENTER);
   rect(0,0, size, size);
+}
 
+function drawCircles(){
   //circles around the square
   translate(size, size );
   fill(d,e,f);
   ellipse(0, 0, size, size);
   translate(100, 100 );
   rect(0, 0, 20, 20);
+}
+
+
+
 
 
   //moves across the screen
-  x = x
+  // x = x
   //rotates square
   angle = angle + size;
-}
 }
