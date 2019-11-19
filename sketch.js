@@ -42,7 +42,7 @@ button2.mousePressed(playOsc);
 }
 
 function playOsc() {
-  
+
     if (!playing) {
       // ramp amplitude to 0.5 over 0.05 seconds
       osc.amp(0.5, 0.05);
@@ -69,7 +69,6 @@ function playSong() {
 function draw() {
   background(0);
   fill(255);
-
 
 
 
@@ -134,6 +133,13 @@ if (keyIsDown(DOWN_ARROW)) {
 let speed = map(w, 0.1, height, 0, 2);
 speed = constrain(speed, 0.01, 4);
 song.rate(speed);
+
+// change oscillator frequency based on mouseX
+var freq = map(q, 0, width, 40, 880);
+osc.freq(freq);
+
+var amp = map(w, 0, height, 1, .01);
+osc.amp(amp);
 
 // for (var i = 0; i < 3; i++) {
 //   drawSun[i]= new drawSun();
