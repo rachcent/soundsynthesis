@@ -7,6 +7,7 @@ var fft = new p5.FFT();
 var soundFile;
 var suns =[];
 let osc;
+let playing = false;
 
 let song;
 let button;
@@ -25,7 +26,7 @@ function setup() {
   osc = new p5.Oscillator();
   osc.setType('sine');
   osc.freq(240);
-  osc.amp(0);
+  osc.amp(2);
   osc.start();
 
 
@@ -41,6 +42,7 @@ button2.mousePressed(playOsc);
 }
 
 function playOsc() {
+  
     if (!playing) {
       // ramp amplitude to 0.5 over 0.05 seconds
       osc.amp(0.5, 0.05);
@@ -122,8 +124,10 @@ if (keyIsDown(UP_ARROW)) {
 if (keyIsDown(DOWN_ARROW)) {
   w += 2;
 }
-
-    fill(d,d,d);
+    //the circle being moved
+    noFill();
+    strokeWeight(2);
+    stroke(d,e,f)
     ellipse(q, w, treble, treble)
 // Set the rate to a range between 0.1 and 4
 // Changing the rate alters the pitch
