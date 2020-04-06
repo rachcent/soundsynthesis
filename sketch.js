@@ -35,24 +35,7 @@ button = createButton('play song');
 button.position(19,19);
 button.mousePressed(playSong);
 
-
-button2 = createButton('play osc');
-button2.position(50,50);
-button2.mousePressed(playOsc);
 }
-
-function playOsc() {
-
-    if (!playing) {
-      // ramp amplitude to 0.5 over 0.05 seconds
-      osc.amp(0.5, 0.05);
-      playing = true;
-    } else {
-      // ramp amplitude to 0 over 0.5 seconds
-      osc.amp(0, 0.5);
-      playing = false;
-    }
-  }
 
 function playSong() {
   if (song.isPlaying()) {
