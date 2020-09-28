@@ -6,7 +6,7 @@ let w = 800;
 var fft = new p5.FFT();
 var soundFile;
 var suns =[];
-let osc;
+// let osc;
 let playing = false;
 
 let song;
@@ -24,10 +24,10 @@ function setup() {
   fft = new p5.FFT();
 
   osc = new p5.Oscillator();
-  osc.setType('sine');
-  osc.freq(240);
+  // osc.setType('sine');
+  // osc.freq(240);
   osc.amp(2);
-  osc.start();
+  // osc.start();
 
 
 
